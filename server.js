@@ -9,7 +9,7 @@ const OPTIONS = {
     "definition": {
       "openapi": "3.0.0",
       "info": {
-        "title": "Swagger Express Excercise API Reference",
+        "title": "Swagger Express API Reference",
         "version": "1.0.0",
         "description": "A Simple Express Swagger API",
         "termsOfService": "http://example.com/terms/",
@@ -23,7 +23,7 @@ const OPTIONS = {
       "servers": [
         {
           "url": "http://134.122.113.50:3000/",
-          "description": "Swagger Express API Documentation"
+          "description": "Swagger Express Documentation"
         }
       ]
     },
