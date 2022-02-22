@@ -95,7 +95,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
  *       500:
  *         description: Could not insert
  */
-app.post("/listofitem", (req, res) => {
+app.post("/listofitem", [
+    check("ITEMCODE", "ITEMCODE must not be empty").isLength({
+      min: 1,
+    }),
+    check("ITEM_NAME", "ITEM_NAME must not be empty").isLength({
+      min: 1,
+    }),
+    check("BATCHCODE", "BATCHCODE must not be empty").isLength({
+      min: 1,
+    }),
+    check("CONAME", "CONAME must not be empty").isLength({
+      min: 1,
+    }),
+  ], (req, res) => {
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
     let body = req.body;
     getConnection()
       .then((conn) => {
@@ -193,7 +210,18 @@ app.post("/listofitem", (req, res) => {
  *       500:
  *         description: Could not update
  */
-app.put("/listofitem", (req, res) => {
+app.put("/listofitem", [
+    check("ITEMCODE", "ITEMCODE must not be empty").isLength({
+      min: 1,
+    }),
+    check("ITEM_NAME", "ITEM_NAME must not be empty").isLength({
+      min: 1,
+    }),
+  ],(req, res) => {
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
     let body = req.body;
     getConnection()
       .then((conn) => {
@@ -248,7 +276,19 @@ app.put("/listofitem", (req, res) => {
  *       500:
  *         description: Could not update
  */
-app.patch("/listofitem", (req, res) => {
+app.patch("/listofitem",[
+    check("ITEMCODE", "ITEMCODE must not be empty").isLength({
+      min: 1,
+    }),
+    check("CONAME", "CONAME must not be empty").isLength({
+      min: 1,
+    }),
+  ],
+ (req, res) => {
+    const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
     let body = req.body;
     getConnection()
       .then((conn) => {
@@ -300,7 +340,11 @@ app.patch("/listofitem", (req, res) => {
  *         description: Could not delete
  */
 
-app.delete("/listofitem/:id", (req, res) => {
+app.delete("/listofitem/:id",[
+    check("id", "ITEMCODE must not be empty").isLength({
+      min: 1,
+    }),
+  ], (req, res) => {
     let id = req.params.id;
     getConnection()
       .then((conn) => {
