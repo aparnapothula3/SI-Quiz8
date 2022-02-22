@@ -99,7 +99,7 @@ app.post("/listofitem", [
     check("ITEMCODE", "ITEMCODE must not be empty").isLength({
       min: 1,
     }),
-    check("ITEM_NAME", "ITEM_NAME must not be empty").isLength({
+    check("ITEMNAME", "ITEMNAME must not be empty").isLength({
       min: 1,
     }),
     check("BATCHCODE", "BATCHCODE must not be empty").isLength({
@@ -214,7 +214,7 @@ app.put("/listofitem", [
     check("ITEMCODE", "ITEMCODE must not be empty").isLength({
       min: 1,
     }),
-    check("ITEM_NAME", "ITEM_NAME must not be empty").isLength({
+    check("ITEMNAME", "ITEMNAME must not be empty").isLength({
       min: 1,
     }),
   ],(req, res) => {
